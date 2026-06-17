@@ -4,9 +4,10 @@ import logoImg from '../assets/logo.png';
 /**
  * Navigation header component with responsive mobile drawer menu.
  */
-const Navbar = () => {
+const Navbar = ({ onOpenConsultation }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrollPercent, setScrollPercent] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,9 +16,21 @@ const Navbar = () => {
       } else {
         setIsScrolled(false);
       }
+
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.scrollY;
+      const scrollDistance = documentHeight - windowHeight;
+      if (scrollDistance > 0) {
+        const percentage = (scrollTop / scrollDistance) * 100;
+        setScrollPercent(percentage);
+      } else {
+        setScrollPercent(0);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -53,7 +66,13 @@ const Navbar = () => {
           <a href="#process" className="nav-link">How It Works</a>
           <a href="#services" className="nav-link">Services</a>
           <a href="#faq" className="nav-link">FAQ</a>
-          <a href="#enquiry" className="nav-cta">Get Free Consultation</a>
+          <button 
+            onClick={onOpenConsultation} 
+            className="nav-cta"
+            style={{ cursor: 'pointer', border: 'none' }}
+          >
+            Get Free Consultation
+          </button>
         </div>
 
         {/* Mobile Actions (Phone & Hamburger) */}
@@ -73,6 +92,9 @@ const Navbar = () => {
             <span></span>
           </button>
         </div>
+        
+        {/* Scroll Progress Bar */}
+        <div className="scroll-progress-bar" style={{ width: `${scrollPercent}%` }}></div>
       </nav>
 
       {/* Mobile Nav Overlay Menu */}
@@ -81,7 +103,16 @@ const Navbar = () => {
           <a href="#process" className="nav-mobile-link" onClick={handleLinkClick}>How It Works</a>
           <a href="#services" className="nav-mobile-link" onClick={handleLinkClick}>Services</a>
           <a href="#faq" className="nav-mobile-link" onClick={handleLinkClick}>FAQ</a>
-          <a href="#enquiry" className="nav-mobile-cta" onClick={handleLinkClick}>Get Free Consultation</a>
+          <button 
+            className="nav-mobile-cta" 
+            onClick={() => {
+              handleLinkClick();
+              onOpenConsultation();
+            }}
+            style={{ border: 'none', cursor: 'pointer' }}
+          >
+            Get Free Consultation
+          </button>
         </div>
       </div>
     </>

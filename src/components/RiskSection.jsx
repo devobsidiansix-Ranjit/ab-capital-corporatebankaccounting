@@ -201,60 +201,126 @@ const RiskSection = () => {
           </a>
         </div>
 
-        <div className="risk-table-wrap">
-          <table className="risk-table">
-            <thead>
-              <tr>
-                <th>Examples</th>
-                <th>Level</th>
-                <th>Our Rate</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="risk-examples-cell">
-                  <div className="risk-flags">
-                    <FlagIcon code="RU" /><FlagIcon code="IR" /><FlagIcon code="SD" /><FlagIcon code="SY" />
-                  </div>
-                  <div className="risk-names">Russia, Iran, Sudan, Syria</div>
-                </td>
-                <td>
-                  <span className="rbadge r-high">High Risk</span>
-                </td>
-                <td>
-                  <span className="r-rate">78%</span>
-                </td>
-              </tr>
-              <tr>
-                <td className="risk-examples-cell">
-                  <div className="risk-flags">
-                    <FlagIcon code="AF" /><FlagIcon code="LB" /><FlagIcon code="GB" /><FlagIcon code="US" />
-                  </div>
-                  <div className="risk-names">Afghanistan, Lebanon, UK, US</div>
-                </td>
-                <td>
-                  <span className="rbadge r-med">Med. Risk</span>
-                </td>
-                <td>
-                  <span className="r-rate">89%</span>
-                </td>
-              </tr>
-              <tr>
-                <td className="risk-examples-cell">
-                  <div className="risk-flags">
-                    <FlagIcon code="IN" /><FlagIcon code="BD" /><FlagIcon code="PK" /><FlagIcon code="PH" />
-                  </div>
-                  <div className="risk-names">India, Bangladesh, Pakistan, Philippines</div>
-                </td>
-                <td>
-                  <span className="rbadge r-low">Low Risk</span>
-                </td>
-                <td>
-                  <span className="r-rate">97%</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div>
+          {/* Table 1: Nationality Assessment */}
+          <div className="risk-table-wrap" style={{ marginBottom: '32px' }}>
+            <table className="risk-table">
+              <thead>
+                <tr>
+                  <th>Examples</th>
+                  <th>Level</th>
+                  <th>Our Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="risk-examples-cell">
+                    <div className="risk-flags">
+                      <FlagIcon code="RU" /><FlagIcon code="IR" /><FlagIcon code="SD" /><FlagIcon code="SY" />
+                    </div>
+                    <div className="risk-names">Russia, Iran, Sudan, Syria</div>
+                  </td>
+                  <td>
+                    <span className="rbadge r-high">High Risk</span>
+                  </td>
+                  <td>
+                    <span className="r-rate">78%</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="risk-examples-cell">
+                    <div className="risk-flags">
+                      <FlagIcon code="AF" /><FlagIcon code="LB" /><FlagIcon code="GB" /><FlagIcon code="US" />
+                    </div>
+                    <div className="risk-names">Afghanistan, Lebanon, UK, US</div>
+                  </td>
+                  <td>
+                    <span className="rbadge r-med">Med. Risk</span>
+                  </td>
+                  <td>
+                    <span className="r-rate">89%</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="risk-examples-cell">
+                    <div className="risk-flags">
+                      <FlagIcon code="IN" /><FlagIcon code="BD" /><FlagIcon code="PK" /><FlagIcon code="PH" />
+                    </div>
+                    <div className="risk-names">India, Bangladesh, Pakistan, Philippines</div>
+                  </td>
+                  <td>
+                    <span className="rbadge r-low">Low Risk</span>
+                  </td>
+                  <td>
+                    <span className="r-rate">97%</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Table 2: High Risk Account Guide */}
+          <div style={{ marginBottom: '12px' }}>
+            <h4 style={{ fontSize: '15px', fontWeight: 600, color: 'var(--accent)', marginBottom: '4px' }}>
+              High Risk Account Profile Guide
+            </h4>
+            <p style={{ color: 'var(--ink-soft)', fontSize: '13px' }}>
+              Minimum balance requirements and monthly maintenance fees for high-risk profiles.
+            </p>
+          </div>
+          <div className="risk-table-wrap">
+            <table className="risk-table">
+              <thead>
+                <tr>
+                  <th>Bank Name</th>
+                  <th>Minimum Balance</th>
+                  <th>Monthly Fees</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style={{ fontWeight: 600, color: 'var(--ink)' }}>ADIB</td>
+                  <td>AED 5,000</td>
+                  <td style={{ color: 'var(--accent-mid)', fontWeight: 600 }}>AED 470</td>
+                </tr>
+                <tr>
+                  <td style={{ fontWeight: 600, color: 'var(--ink)' }}>Mashreq</td>
+                  <td>AED 150,000</td>
+                  <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+                </tr>
+                <tr>
+                  <td style={{ fontWeight: 600, color: 'var(--ink)' }}>DIB (Dubai Islamic Bank)</td>
+                  <td>AED 50,000</td>
+                  <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+                </tr>
+                <tr>
+                  <td style={{ fontWeight: 600, color: 'var(--ink)' }}>Emirates NBD</td>
+                  <td>AED 200,000</td>
+                  <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+                </tr>
+                <tr>
+                  <td style={{ fontWeight: 600, color: 'var(--ink)' }}>FAB (First Abu Dhabi Bank)</td>
+                  <td>AED 250,000</td>
+                  <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+                </tr>
+                <tr>
+                  <td style={{ fontWeight: 600, color: 'var(--ink)' }}>UBL</td>
+                  <td>AED 750,000</td>
+                  <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+                </tr>
+                <tr>
+                  <td style={{ fontWeight: 600, color: 'var(--ink)' }}>NBF (National Bank of Fujairah)</td>
+                  <td>AED 100,000</td>
+                  <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+                </tr>
+                <tr>
+                  <td style={{ fontWeight: 600, color: 'var(--ink)' }}>EIB (Emirates Islamic)</td>
+                  <td>AED 100,000</td>
+                  <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>

@@ -1,6 +1,3 @@
-import React from 'react';
-import banksImg from '../assets/banks_visual.png';
-
 // Import bank logos
 import wioLogo from '../assets/bank_logos/wio.png';
 import emiratesIslamicLogo from '../assets/bank_logos/emirates_islamic.png';
@@ -10,6 +7,14 @@ import adibLogo from '../assets/bank_logos/adib.png';
 import fabLogo from '../assets/bank_logos/fab.png';
 import ublLogo from '../assets/bank_logos/ubl.png';
 import ruyaLogo from '../assets/bank_logos/ruya.png';
+import rakLogo from '../assets/bank_logos/rak.svg';
+import mashreqLogo from '../assets/bank_logos/mashreq.svg';
+import enbdLogo from '../assets/bank_logos/enbd.svg';
+import adcbLogo from '../assets/bank_logos/adcb.png';
+import dibLogo from '../assets/bank_logos/dib.png';
+import cbdLogo from '../assets/bank_logos/cbd.png';
+import sharjahIslamicLogo from '../assets/bank_logos/sharjah_islamic.png';
+import ajmanLogo from '../assets/bank_logos/ajman.png';
 
 /**
  * Redesigned BanksSection matching the high-fidelity Image 5 banking layout.
@@ -23,7 +28,7 @@ const BanksSection = () => {
       <div className="banks-top-row">
         <div>
           <div className="eyebrow">Banking Network</div>
-          <h2>8 Bank <em>Partnerships</em></h2>
+          <h2>15+ Bank <em>Partnerships</em></h2>
           <p className="section-lead">
             We don't submit blind applications. Our consultants have direct working relationships with compliance teams at major UAE banks.
           </p>
@@ -54,52 +59,52 @@ const BanksSection = () => {
       {/* Responsive Grid with Bank Logos */}
       <div className="banks-logos-grid">
         
-        {/* 1. Wio Bank */}
+        {/* 1. ADCB */}
         <div className="bank-logo-card reveal d1">
           <div className="bank-logo-visual">
-            <img src={wioLogo} alt="Wio Bank Logo" className="bank-logo-img" />
+            <img src={adcbLogo} alt="ADCB Logo" className="bank-logo-img" />
           </div>
-          <span className="bank-logo-name">Wio Bank</span>
+          <span className="bank-logo-name">ADCB</span>
         </div>
 
-        {/* 2. Emirates Islamic Bank */}
+        {/* 2. ADIB */}
         <div className="bank-logo-card reveal d2">
-          <div className="bank-logo-visual">
-            <img src={emiratesIslamicLogo} alt="Emirates Islamic Bank Logo" className="bank-logo-img" />
-          </div>
-          <span className="bank-logo-name">Emirates Islamic Bank</span>
-        </div>
-
-        {/* 3. M Bank (Al Mariah community) */}
-        <div className="bank-logo-card reveal d3">
-          <div className="bank-logo-visual">
-            <img src={mbankLogo} alt="M Bank (Al Mariah Community Bank) Logo" className="bank-logo-img" />
-          </div>
-          <span className="bank-logo-name">M Bank (Al Mariah community)</span>
-        </div>
-
-        {/* 4. Bank A Misr */}
-        <div className="bank-logo-card reveal" style={{ transitionDelay: '0.32s' }}>
-          <div className="bank-logo-visual">
-            <img src={banqueMisrLogo} alt="Bank A Misr Logo" className="bank-logo-img" />
-          </div>
-          <span className="bank-logo-name">Bank A Misr</span>
-        </div>
-
-        {/* 5. ADIB */}
-        <div className="bank-logo-card reveal d1">
           <div className="bank-logo-visual">
             <img src={adibLogo} alt="ADIB Logo" className="bank-logo-img" />
           </div>
           <span className="bank-logo-name">ADIB</span>
         </div>
 
-        {/* 6. Ruya Bank */}
+        {/* 3. RAKBANK */}
+        <div className="bank-logo-card reveal d3">
+          <div className="bank-logo-visual">
+            <img src={rakLogo} alt="RAKBANK Logo" className="bank-logo-img" />
+          </div>
+          <span className="bank-logo-name">RAKBANK</span>
+        </div>
+
+        {/* 4. Wio Bank */}
+        <div className="bank-logo-card reveal" style={{ transitionDelay: '0.32s' }}>
+          <div className="bank-logo-visual">
+            <img src={wioLogo} alt="Wio Bank Logo" className="bank-logo-img" />
+          </div>
+          <span className="bank-logo-name">Wio Bank</span>
+        </div>
+
+        {/* 5. Mashreq Bank */}
+        <div className="bank-logo-card reveal d1">
+          <div className="bank-logo-visual">
+            <img src={mashreqLogo} alt="Mashreq Bank Logo" className="bank-logo-img" />
+          </div>
+          <span className="bank-logo-name">Mashreq Bank</span>
+        </div>
+
+        {/* 6. Dubai Islamic Bank */}
         <div className="bank-logo-card reveal d2">
           <div className="bank-logo-visual">
-            <img src={ruyaLogo} alt="Ruya Bank Logo" className="bank-logo-img" />
+            <img src={dibLogo} alt="Dubai Islamic Bank Logo" className="bank-logo-img" />
           </div>
-          <span className="bank-logo-name">Ruya Bank</span>
+          <span className="bank-logo-name">Dubai Islamic Bank</span>
         </div>
 
         {/* 7. FAB */}
@@ -110,7 +115,39 @@ const BanksSection = () => {
           <span className="bank-logo-name">FAB</span>
         </div>
 
-        {/* 8. UBL */}
+        {/* 8. Emirates NBD */}
+        <div className="bank-logo-card reveal" style={{ transitionDelay: '0.32s' }}>
+          <div className="bank-logo-visual">
+            <img src={enbdLogo} alt="Emirates NBD Logo" className="bank-logo-img" />
+          </div>
+          <span className="bank-logo-name">Emirates NBD</span>
+        </div>
+
+        {/* 9. Emirates Islamic Bank */}
+        <div className="bank-logo-card reveal d1">
+          <div className="bank-logo-visual">
+            <img src={emiratesIslamicLogo} alt="Emirates Islamic Bank Logo" className="bank-logo-img" />
+          </div>
+          <span className="bank-logo-name">Emirates Islamic Bank</span>
+        </div>
+
+        {/* 10. Sharjah Islamic Bank */}
+        <div className="bank-logo-card reveal d2">
+          <div className="bank-logo-visual">
+            <img src={sharjahIslamicLogo} alt="Sharjah Islamic Bank Logo" className="bank-logo-img" />
+          </div>
+          <span className="bank-logo-name">Sharjah Islamic Bank</span>
+        </div>
+
+        {/* 11. CBD */}
+        <div className="bank-logo-card reveal d3">
+          <div className="bank-logo-visual">
+            <img src={cbdLogo} alt="Commercial Bank of Dubai Logo" className="bank-logo-img" />
+          </div>
+          <span className="bank-logo-name">Commercial Bank of Dubai</span>
+        </div>
+
+        {/* 12. UBL */}
         <div className="bank-logo-card reveal" style={{ transitionDelay: '0.32s' }}>
           <div className="bank-logo-visual">
             <img src={ublLogo} alt="UBL Logo" className="bank-logo-img" />
@@ -118,94 +155,129 @@ const BanksSection = () => {
           <span className="bank-logo-name">UBL</span>
         </div>
 
-      </div>
-
-      {/* Underneath Stats and Visual Testimonial Panel */}
-      <div className="banks-footer-container">
-        
-        {/* Left Column: Caution Disclaimer Box & Stats Pillars */}
-        <div>
-          <div className="banks-corporate-caution-box reveal d1">
-            <div className="banks-caution-top">
-              <div className="banks-caution-icon">
-                {/* Shield Check SVG */}
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-              </div>
-              <div className="banks-caution-text">
-                <p>
-                  <strong>Corporate accounts only.</strong> We do not assist with personal banking. Our service covers UAE Free Zone, Mainland, and Offshore companies exclusively.
-                </p>
-              </div>
-            </div>
-
-            {/* Stats Pillars */}
-            <div className="banks-stats-row">
-              {/* Stat 1 */}
-              <div className="bank-stat-icon-item">
-                <div className="bank-stat-icon-circle">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                  </svg>
-                </div>
-                <div className="bank-stat-copy">
-                  <h5>8</h5>
-                  <p>Bank Partners</p>
-                </div>
-              </div>
-
-              {/* Stat 2 */}
-              <div className="bank-stat-icon-item">
-                <div className="bank-stat-icon-circle">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                </div>
-                <div className="bank-stat-copy">
-                  <h5>5+</h5>
-                  <p>Years Presence</p>
-                </div>
-              </div>
-
-              {/* Stat 3 */}
-              <div className="bank-stat-icon-item">
-                <div className="bank-stat-icon-circle">
-                  <svg viewBox="0 0 24 24">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                  </svg>
-                </div>
-                <div className="bank-stat-copy">
-                  <h5>240+</h5>
-                  <p>Client Approvals</p>
-                </div>
-              </div>
-
-            </div>
+        {/* 13. Banque Misr */}
+        <div className="bank-logo-card reveal d1">
+          <div className="bank-logo-visual">
+            <img src={banqueMisrLogo} alt="Banque Misr Logo" className="bank-logo-img" />
           </div>
+          <span className="bank-logo-name">Banque Misr</span>
         </div>
 
-        {/* Right Column: Tall quote banner overlaid with a blockquote */}
-        <div className="banks-quote-banner-container reveal d2">
-          <img
-            src={banksImg}
-            alt="View of bank skyscrapers in Dubai marina waterfront"
-            className="banks-quote-banner-img"
-          />
-          <div className="banks-quote-banner-overlay"></div>
-          <div className="banks-quote-banner-content">
-            <span className="banks-quote-mark">“</span>
-            <p className="banks-quote-text">
-              Strong relationships. Trusted by leading banks in the UAE.
-            </p>
-            <div className="banks-quote-sep-line"></div>
+        {/* 14. Ruya Bank */}
+        <div className="bank-logo-card reveal d2">
+          <div className="bank-logo-visual">
+            <img src={ruyaLogo} alt="Ruya Bank Logo" className="bank-logo-img" />
           </div>
+          <span className="bank-logo-name">Ruya Bank</span>
+        </div>
+
+        {/* 15. M Bank */}
+        <div className="bank-logo-card reveal d3">
+          <div className="bank-logo-visual">
+            <img src={mbankLogo} alt="M Bank Logo" className="bank-logo-img" />
+          </div>
+          <span className="bank-logo-name">M Bank</span>
+        </div>
+
+        {/* 16. Ajman Bank */}
+        <div className="bank-logo-card reveal" style={{ transitionDelay: '0.32s' }}>
+          <div className="bank-logo-visual">
+            <img src={ajmanLogo} alt="Ajman Bank Logo" className="bank-logo-img" />
+          </div>
+          <span className="bank-logo-name">Ajman Bank</span>
         </div>
 
       </div>
 
+      {/* Table Section: Zero Balance Low & Medium Risk Accounts */}
+      <div className="reveal" style={{ marginTop: '56px', marginBottom: '40px' }}>
+        <div style={{ marginBottom: '24px' }}>
+          <h3 style={{ fontSize: '22px', fontWeight: 600, color: 'var(--accent)', marginBottom: '8px' }}>
+            Account Fees &amp; Minimum Balance Guide
+          </h3>
+          <p style={{ color: 'var(--ink-soft)', fontSize: '15px' }}>
+            Zero-balance options and account maintenance costs for <strong>Low &amp; Medium Risk</strong> profiles across UAE banks.
+          </p>
+        </div>
+        <div className="risk-table-wrap">
+          <table className="risk-table">
+            <thead>
+              <tr>
+                <th>Bank Name</th>
+                <th>Minimum Balance Required</th>
+                <th>Monthly Maintenance Fees</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>Wio Bank</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero Balance</td>
+                <td>AED 99</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>Mashreq</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero Balance</td>
+                <td>AED 99</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>ADCB</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero Balance</td>
+                <td>AED 131</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>RAKBANK</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero Balance</td>
+                <td>AED 149</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>ADIB</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero Balance</td>
+                <td>AED 125</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>Emirates NBD</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero Balance</td>
+                <td>AED 250</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>M Bank (Al Mariah community)</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero Balance</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>Ruya Bank</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero Balance</td>
+                <td>AED 79</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>FAB (First Abu Dhabi Bank)</td>
+                <td>AED 10,000</td>
+                <td>AED 250</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>UBL (Standard)</td>
+                <td>AED 25,000</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>DIB (Dubai Islamic Bank)</td>
+                <td>AED 50,000</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>NBF (National Bank of Fujairah)</td>
+                <td>AED 25,000</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>EIB (Emirates Islamic)</td>
+                <td>AED 10,000 - 50,000</td>
+                <td>AED 125 - 200</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </section>
   );
 };

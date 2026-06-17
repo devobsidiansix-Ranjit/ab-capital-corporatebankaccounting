@@ -48,13 +48,12 @@ const DIGIT_LIMITS = {
  * LeadForm component integrating custom form inputs with Google Forms submission endpoint.
  * Features an API-driven responsive phone input with dynamic country selector & digit limits.
  */
-const LeadForm = ({ onSubmitSuccess }) => {
+const LeadForm = ({ onSubmitSuccess, darkGlass = false }) => {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     nationality: '',
     companyType: '',
-    monthlyVolume: '',
     businessActivity: '',
     previouslyRejected: ''
   });
@@ -63,6 +62,23 @@ const LeadForm = ({ onSubmitSuccess }) => {
   const [selectedCountry, setSelectedCountry] = useState(FALLBACK_COUNTRIES[0]);
   const [phoneDigits, setPhoneDigits] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [submittedData, setSubmittedData] = useState(null);
+
+  // Check localStorage on mount
+  useEffect(() => {
+    if (localStorage.getItem('form_submitted_ab_capital') === 'true') {
+      setHasSubmitted(true);
+      try {
+        const stored = localStorage.getItem('last_lead_data');
+        if (stored) {
+          setSubmittedData(JSON.parse(stored));
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, []);
 
   // Fetch country codes from public REST Countries API on mount
   useEffect(() => {
@@ -133,14 +149,13 @@ const LeadForm = ({ onSubmitSuccess }) => {
     setIsSubmitting(true);
 
     const fullWhatsappNumber = `${selectedCountry.dialCode} ${phoneDigits}`;
+    const payload = {
+      ...formData,
+      whatsapp: fullWhatsappNumber,
+      action: 'create_lead'
+    };
 
     try {
-      const payload = {
-        ...formData,
-        whatsapp: fullWhatsappNumber,
-        action: 'create_lead'
-      };
-
       if (GOOGLE_FORM_CONFIG.IS_WEB_APP) {
         await fetch(GOOGLE_FORM_CONFIG.FORM_ACTION_URL, {
           method: 'POST',
@@ -156,7 +171,6 @@ const LeadForm = ({ onSubmitSuccess }) => {
         formBody.append(GOOGLE_FORM_CONFIG.FIELD_IDS.email, payload.email);
         formBody.append(GOOGLE_FORM_CONFIG.FIELD_IDS.nationality, payload.nationality);
         formBody.append(GOOGLE_FORM_CONFIG.FIELD_IDS.companyType, payload.companyType);
-        formBody.append(GOOGLE_FORM_CONFIG.FIELD_IDS.monthlyVolume, payload.monthlyVolume);
         formBody.append(GOOGLE_FORM_CONFIG.FIELD_IDS.businessActivity, payload.businessActivity);
         formBody.append(GOOGLE_FORM_CONFIG.FIELD_IDS.previouslyRejected, payload.previouslyRejected);
 
@@ -171,12 +185,15 @@ const LeadForm = ({ onSubmitSuccess }) => {
       }
 
       onSubmitSuccess(payload);
+      localStorage.setItem('form_submitted_ab_capital', 'true');
+      localStorage.setItem('last_lead_data', JSON.stringify(payload));
+      setSubmittedData(payload);
+      setHasSubmitted(true);
       setFormData({
         fullName: '',
         email: '',
         nationality: '',
         companyType: '',
-        monthlyVolume: '',
         businessActivity: '',
         previouslyRejected: ''
       });
@@ -184,13 +201,84 @@ const LeadForm = ({ onSubmitSuccess }) => {
     } catch (error) {
       console.warn('Form submission network handled:', error);
       onSubmitSuccess(payload);
+      localStorage.setItem('form_submitted_ab_capital', 'true');
+      localStorage.setItem('last_lead_data', JSON.stringify(payload));
+      setSubmittedData(payload);
+      setHasSubmitted(true);
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const getWhatsappUrl = () => {
+    if (!submittedData) {
+      return `https://wa.me/971585699300?text=Hi%20AB%20Capital,%20I%20just%20submitted%20my%20corporate%20banking%20assessment.%20Please%20help%20fast-track%20my%20application.`;
+    }
+    const msg = `Hi AB Capital, I just submitted my corporate banking assessment. Here are my details:
+
+• Name: ${submittedData.fullName || ''}
+• WhatsApp: ${submittedData.whatsapp || ''}
+• Email: ${submittedData.email || ''}
+• Nationality: ${submittedData.nationality || ''}
+• Company Type: ${submittedData.companyType || ''}
+• Business Activity: ${submittedData.businessActivity || ''}
+• Previously Rejected: ${submittedData.previouslyRejected || ''}
+
+Please help fast-track my application.`;
+    return `https://wa.me/971585699300?text=${encodeURIComponent(msg)}`;
+  };
+
+  if (hasSubmitted) {
+    return (
+      <div className={`form-panel ${darkGlass ? 'dark-glass' : ''}`} id="enquiry" style={{ textAlign: 'center', padding: '40px 24px' }}>
+        <div className="form-panel-header">
+          <h3>Thank You!</h3>
+          <p>We've received your assessment</p>
+        </div>
+        <div className="form-body" style={{ marginTop: '20px' }}>
+          <div style={{ marginBottom: '24px' }}>
+            <svg viewBox="0 0 52 52" style={{ width: '64px', height: '64px', display: 'block', margin: '0 auto' }}>
+              <circle cx="26" cy="26" r="25" fill="none" stroke="#10B981" strokeWidth="2" />
+              <path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" stroke="#10B981" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+          <p style={{ color: darkGlass ? 'rgba(255, 255, 255, 0.9)' : 'var(--ink-soft)', fontSize: '15px', lineHeight: '1.6', marginBottom: '28px' }}>
+            Thanks for filling the form. Your assessment details have been securely logged. Our compliance advisor will contact you within 2 business hours.
+          </p>
+          <a 
+            href={getWhatsappUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ty-btn-whatsapp"
+            style={{ 
+              display: 'inline-flex', 
+              width: '100%', 
+              textDecoration: 'none', 
+              justifyContent: 'center',
+              backgroundColor: '#25D366',
+              color: '#FFFFFF',
+              fontWeight: '600',
+              padding: '14px',
+              borderRadius: '8px',
+              gap: '8px',
+              boxShadow: '0 4px 14px rgba(37, 211, 102, 0.3)',
+              alignItems: 'center',
+              transition: 'all 0.25s'
+            }}
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+              <path d="M11.99 2h-.01C6.47 2 2 6.48 2 12c0 1.925.52 3.725 1.43 5.275L2.07 22l4.82-1.34C8.27 21.52 10.09 22 12 22c5.52 0 10-4.48 10-10S17.52 2 11.99 2z" />
+            </svg>
+            Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="form-panel" id="enquiry">
+    <div className={`form-panel ${darkGlass ? 'dark-glass' : ''}`} id="enquiry">
       <div className="form-panel-header">
         <h3>Let's Talk</h3>
         <p>Get a Call Back Shortly!</p>
@@ -291,39 +379,21 @@ const LeadForm = ({ onSubmitSuccess }) => {
             </select>
           </div>
 
-          <div className="f-row">
-            <div className="f-group">
-              <label className="f-label">Company Type</label>
-              <select
-                name="companyType"
-                value={formData.companyType}
-                onChange={handleChange}
-                className="f-ctrl"
-                required
-              >
-                <option value="" disabled>Select type</option>
-                <option value="Free Zone">Free Zone</option>
-                <option value="Mainland">Mainland</option>
-                <option value="Offshore">Offshore</option>
-                <option value="Not yet formed">Not yet formed</option>
-              </select>
-            </div>
-            <div className="f-group">
-              <label className="f-label">Monthly Volume</label>
-              <select
-                name="monthlyVolume"
-                value={formData.monthlyVolume}
-                onChange={handleChange}
-                className="f-ctrl"
-                required
-              >
-                <option value="" disabled>Expected</option>
-                <option value="Under AED 50K">Under AED 50K</option>
-                <option value="AED 50K–200K">AED 50K–200K</option>
-                <option value="AED 200K–500K">AED 200K–500K</option>
-                <option value="AED 500K+">AED 500K+</option>
-              </select>
-            </div>
+          <div className="f-group">
+            <label className="f-label">Company Type</label>
+            <select
+              name="companyType"
+              value={formData.companyType}
+              onChange={handleChange}
+              className="f-ctrl"
+              required
+            >
+              <option value="" disabled>Select type</option>
+              <option value="Free Zone">Free Zone</option>
+              <option value="Mainland">Mainland</option>
+              <option value="Offshore">Offshore</option>
+              <option value="Not yet formed">Not yet formed</option>
+            </select>
           </div>
 
           <div className="f-group">

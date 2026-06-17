@@ -208,7 +208,7 @@ const ServicesSection = () => {
       <div className="services-grid">
         
         {/* Card 1: Highlighted "Most Requested" Card */}
-        <div className="svc-card highlight reveal d1">
+        <a href="#enquiry" className="svc-card highlight reveal d1" style={{ textDecoration: 'none' }}>
           <div className="svc-card-bg" style={{ backgroundImage: `url(${corpAccountImg})` }}></div>
           <div className="svc-card-overlay"></div>
           <span className="svc-badge-top">Most Requested</span>
@@ -223,14 +223,14 @@ const ServicesSection = () => {
               <span className="svc-badge">Mainland</span>
               <span className="svc-badge">Offshore</span>
             </div>
-            <a href="#enquiry" className="svc-more">
+            <div className="svc-more">
               Learn More <span>→</span>
-            </a>
+            </div>
           </div>
-        </div>
+        </a>
 
         {/* Card 2 */}
-        <div className="svc-card reveal d2">
+        <a href="#enquiry" className="svc-card reveal d2" style={{ textDecoration: 'none' }}>
           <div className="svc-card-bg" style={{ backgroundImage: `url(${highRiskImg})` }}></div>
           <div className="svc-card-overlay"></div>
           <span className="svc-badge-top">Specialist</span>
@@ -243,14 +243,14 @@ const ServicesSection = () => {
             <div className="svc-tags-row">
               <span className="svc-badge">50+ Nationalities</span>
             </div>
-            <a href="#enquiry" className="svc-more">
+            <div className="svc-more">
               Learn More <span>→</span>
-            </a>
+            </div>
           </div>
-        </div>
+        </a>
 
         {/* Card 3 */}
-        <div className="svc-card reveal d3">
+        <a href="#enquiry" className="svc-card reveal d3" style={{ textDecoration: 'none' }}>
           <div className="svc-card-bg" style={{ backgroundImage: `url(${recoveryImg})` }}></div>
           <div className="svc-card-overlay"></div>
           <span className="svc-badge-top">Recovery</span>
@@ -263,14 +263,14 @@ const ServicesSection = () => {
             <div className="svc-tags-row">
               <span className="svc-badge">Profile Rebuild</span>
             </div>
-            <a href="#enquiry" className="svc-more">
+            <div className="svc-more">
               Learn More <span>→</span>
-            </a>
+            </div>
           </div>
-        </div>
+        </a>
 
         {/* Card 4 */}
-        <div className="svc-card reveal">
+        <a href="#enquiry" className="svc-card reveal" style={{ textDecoration: 'none' }}>
           <div className="svc-card-bg" style={{ backgroundImage: `url(${neoBankImg})` }}></div>
           <div className="svc-card-overlay"></div>
           <span className="svc-badge-top">Fast-Track</span>
@@ -284,14 +284,14 @@ const ServicesSection = () => {
               <span className="svc-badge">Wio Bank</span>
               <span className="svc-badge">Fintech</span>
             </div>
-            <a href="#enquiry" className="svc-more">
+            <div className="svc-more">
               Learn More <span>→</span>
-            </a>
+            </div>
           </div>
-        </div>
+        </a>
 
         {/* Card 5 */}
-        <div className="svc-card reveal" style={{ transitionDelay: '0.12s' }}>
+        <a href="#enquiry" className="svc-card reveal" style={{ transitionDelay: '0.12s', textDecoration: 'none' }}>
           <div className="svc-card-bg" style={{ backgroundImage: `url(${multiCurrencyImg})` }}></div>
           <div className="svc-card-overlay"></div>
           <span className="svc-badge-top">Trade</span>
@@ -305,14 +305,14 @@ const ServicesSection = () => {
               <span className="svc-badge">Multi-Currency</span>
               <span className="svc-badge">Trade Finance</span>
             </div>
-            <a href="#enquiry" className="svc-more">
+            <div className="svc-more">
               Learn More <span>→</span>
-            </a>
+            </div>
           </div>
-        </div>
+        </a>
 
         {/* Card 6 */}
-        <div className="svc-card reveal" style={{ transitionDelay: '0.24s' }}>
+        <a href="#enquiry" className="svc-card reveal" style={{ transitionDelay: '0.24s', textDecoration: 'none' }}>
           <div className="svc-card-bg" style={{ backgroundImage: `url(${documentAttestationImg})` }}></div>
           <div className="svc-card-overlay"></div>
           <span className="svc-badge-top">Compliance</span>
@@ -327,11 +327,11 @@ const ServicesSection = () => {
               <span className="svc-badge">UBO</span>
               <span className="svc-badge">KYC</span>
             </div>
-            <a href="#enquiry" className="svc-more">
+            <div className="svc-more">
               Learn More <span>→</span>
-            </a>
+            </div>
           </div>
-        </div>
+        </a>
 
       </div>
 

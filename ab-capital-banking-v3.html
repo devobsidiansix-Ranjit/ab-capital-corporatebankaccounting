@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Corporate Bank Account Opening in Dubai | AB Capital Services</title>
+<link rel="icon" type="image/png" href="public/meta_logo.png">
 <meta name="description" content="Expert-guided corporate bank account opening in Dubai & UAE. 94% approval rate. High-risk nationalities welcome. Get approved in 7–21 days.">
 
 <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
@@ -68,6 +69,17 @@ nav {
   transition: box-shadow 0.3s;
 }
 nav.scrolled { box-shadow: var(--shadow-sm); }
+.scroll-progress-bar {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  height: 3.5px;
+  width: 0%;
+  background: linear-gradient(to right, var(--accent), var(--accent-mid));
+  box-shadow: 0 0 8px rgba(42, 85, 128, 0.4);
+  z-index: 101;
+  transition: width 0.08s ease-out;
+}
 .nav-brand {
   display: flex; align-items: center; gap: 10px;
 }
@@ -1155,8 +1167,25 @@ footer {
   .bank-note-box { padding: 14px 16px !important; margin-top: 20px !important; }
 }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1163808124376530');
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1163808124376530&ev=PageView&noscript=1"
+/></noscript>
 
 <!-- NAV -->
 <nav id="nav">
@@ -1184,6 +1213,9 @@ footer {
       <span></span>
     </button>
   </div>
+  
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress-bar" id="scrollProgress"></div>
 </nav>
 
 <!-- Mobile Nav Overlay Menu -->
@@ -2087,9 +2119,21 @@ footer {
 </div>
 
 <script>
-// Navbar
+// Navbar & Scroll Progress
 window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+  const scrollY = window.scrollY;
+  document.getElementById('nav').classList.toggle('scrolled', scrollY > 40);
+  
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight;
+  const scrollDistance = documentHeight - windowHeight;
+  const scrollProgress = document.getElementById('scrollProgress');
+  if (scrollProgress && scrollDistance > 0) {
+    const percentage = (scrollY / scrollDistance) * 100;
+    scrollProgress.style.width = percentage + '%';
+  } else if (scrollProgress) {
+    scrollProgress.style.width = '0%';
+  }
 });
 
 // Mobile menu toggle

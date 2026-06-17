@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="100%" height="100%">
+  <!-- Icon: RAKBANK Bird/Wing -->
+  <g transform="translate(10, 5)">
+    <!-- Red wing 1 -->
+    <path d="M 38 7 C 22 10, 10 23, 10 38 C 10 48, 18 52, 25 50 C 13 46, 12 33, 22 25 C 20 29, 21 34, 25 36 C 21 27, 27 18, 38 7 Z" fill="#E10613" />
+    <!-- Yellow Swoosh -->
+    <path d="M 7 38 C 12 48, 25 52, 36 44 C 24 48, 14 45, 7 38 Z" fill="#FFC72C" />
+    <!-- Red wing 2 (inner) -->
+    <path d="M 23 23 C 28 15, 36 12, 42 10 C 34 15, 30 22, 28 30 C 26 25, 24 23, 23 23 Z" fill="#E10613" />
+  </g>
+  <!-- Text -->
+  <text x="65" y="40" font-family="'Outfit', 'Helvetica Neue', sans-serif" font-weight="900" font-size="30" fill="#E10613" letter-spacing="-0.5">RAKBANK</text>
+</svg>

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import LeadForm from './LeadForm';
-import bgImage from '../assets/burj_khalifa_office.png';
+import bgImage from '../assets/dubai_skyline_night.png';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
  * Hero component using Image 1 design layout and Image 2 (Burj Khalifa office) background.
  * Overhauled with GSAP ScrollTrigger metric tickers and 3-column framing for the businessman.
  */
-const Hero = ({ onSubmitSuccess }) => {
+const Hero = ({ onSubmitSuccess, onOpenConsultation }) => {
   const heroRef = useRef(null);
   const metricsRef = useRef(null);
 
@@ -106,10 +106,10 @@ const Hero = ({ onSubmitSuccess }) => {
           <em>Without the Rejection.</em>
         </h1>
         <p className="hero-sub">
-          1 in 3 independent applications gets rejected or stuck. <strong>We get you approved.</strong> AB Capital's banking consultants have direct relationships with compliance officers at 10+ UAE banks — matching your profile to the right institution, first time.
+          1 in 3 independent applications gets rejected or stuck. <strong>We get you approved.</strong> AB Capital's banking consultants have direct relationships with compliance officers at 15+ UAE banks — matching your profile to the right institution, first time.
         </p>
 
-        <div className="hero-metrics" ref={metricsRef}>
+        <div className="hero-metrics dark-glass" ref={metricsRef}>
           <div className="metric metric-item">
             <span className="metric-val">94%</span>
             <span className="metric-lbl">Approval Rate</span>
@@ -119,7 +119,7 @@ const Hero = ({ onSubmitSuccess }) => {
             <span className="metric-lbl">Days to Activate</span>
           </div>
           <div className="metric metric-item">
-            <span className="metric-val">10+</span>
+            <span className="metric-val">15+</span>
             <span className="metric-lbl">Bank Partners</span>
           </div>
           <div className="metric metric-item">
@@ -129,9 +129,13 @@ const Hero = ({ onSubmitSuccess }) => {
         </div>
 
         <div className="hero-actions">
-          <a href="#enquiry" className="btn-primary">
+          <button 
+            onClick={onOpenConsultation}
+            className="btn-primary"
+            style={{ border: 'none', cursor: 'pointer' }}
+          >
             Get Free Consultation →
-          </a>
+          </button>
           <a href="#process" className="btn-ghost">
             How It Works <span className="arrow-icon">↓</span>
           </a>
@@ -156,7 +160,7 @@ const Hero = ({ onSubmitSuccess }) => {
 
       {/* Column 3: Lead Capture Form */}
       <div className="form-panel-wrapper">
-        <LeadForm onSubmitSuccess={onSubmitSuccess} />
+        <LeadForm onSubmitSuccess={onSubmitSuccess} darkGlass={true} />
       </div>
     </section>
   );

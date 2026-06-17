@@ -6,14 +6,41 @@ import logoImg from '../assets/logo.png';
  * Displays confirmation details, direct WhatsApp escalation link, and brand coordinates.
  */
 const SuccessModal = ({ isOpen, onClose, leadData = null }) => {
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const leadName = leadData?.fullName || '';
 
   // Direct escalation WhatsApp link with prefilled details
-  const whatsappUrl = `https://wa.me/971585699300?text=Hi%20AB%20Capital,%20my%20name%20is%20${encodeURIComponent(
-    leadName
-  )}.%20I%20just%20submitted%20my%20corporate%20banking%20assessment.%20Please%20help%20fast-track%20my%20application.`;
+  const getWhatsappUrl = () => {
+    if (!leadData) {
+      return `https://wa.me/971585699300?text=Hi%20AB%20Capital,%20I%20just%20submitted%20my%20corporate%20banking%20assessment.%20Please%20help%20fast-track%20my%20application.`;
+    }
+    const msg = `Hi AB Capital, I just submitted my corporate banking assessment. Here are my details:
+
+• Name: ${leadData.fullName || ''}
+• WhatsApp: ${leadData.whatsapp || ''}
+• Email: ${leadData.email || ''}
+• Nationality: ${leadData.nationality || ''}
+• Company Type: ${leadData.companyType || ''}
+• Business Activity: ${leadData.businessActivity || ''}
+• Previously Rejected: ${leadData.previouslyRejected || ''}
+
+Please help fast-track my application.`;
+    return `https://wa.me/971585699300?text=${encodeURIComponent(msg)}`;
+  };
+
+  const whatsappUrl = getWhatsappUrl();
 
   return (
     <div className="ty-screen-container">
