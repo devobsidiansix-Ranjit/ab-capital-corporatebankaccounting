@@ -48,7 +48,7 @@ const DIGIT_LIMITS = {
  * LeadForm component integrating custom form inputs with Google Forms submission endpoint.
  * Features an API-driven responsive phone input with dynamic country selector & digit limits.
  */
-const LeadForm = ({ onSubmitSuccess, darkGlass = false }) => {
+const LeadForm = ({ onSubmitSuccess, darkGlass = false, hasSubmitted, submittedData }) => {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -62,23 +62,6 @@ const LeadForm = ({ onSubmitSuccess, darkGlass = false }) => {
   const [selectedCountry, setSelectedCountry] = useState(FALLBACK_COUNTRIES[0]);
   const [phoneDigits, setPhoneDigits] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [submittedData, setSubmittedData] = useState(null);
-
-  // Check localStorage on mount
-  useEffect(() => {
-    if (localStorage.getItem('form_submitted_ab_capital') === 'true') {
-      setHasSubmitted(true);
-      try {
-        const stored = localStorage.getItem('last_lead_data');
-        if (stored) {
-          setSubmittedData(JSON.parse(stored));
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    }
-  }, []);
 
   // Fetch country codes from public REST Countries API on mount
   useEffect(() => {
@@ -185,10 +168,6 @@ const LeadForm = ({ onSubmitSuccess, darkGlass = false }) => {
       }
 
       onSubmitSuccess(payload);
-      localStorage.setItem('form_submitted_ab_capital', 'true');
-      localStorage.setItem('last_lead_data', JSON.stringify(payload));
-      setSubmittedData(payload);
-      setHasSubmitted(true);
       setFormData({
         fullName: '',
         email: '',
@@ -201,10 +180,6 @@ const LeadForm = ({ onSubmitSuccess, darkGlass = false }) => {
     } catch (error) {
       console.warn('Form submission network handled:', error);
       onSubmitSuccess(payload);
-      localStorage.setItem('form_submitted_ab_capital', 'true');
-      localStorage.setItem('last_lead_data', JSON.stringify(payload));
-      setSubmittedData(payload);
-      setHasSubmitted(true);
     } finally {
       setIsSubmitting(false);
     }

@@ -277,6 +277,69 @@ const BanksSection = () => {
             </tbody>
           </table>
         </div>
+
+        {/* Table 2 Section: Zero Balance High Risk Accounts */}
+        <div style={{ marginTop: '48px', marginBottom: '24px' }}>
+          <h3 style={{ fontSize: '22px', fontWeight: 600, color: 'var(--accent)', marginBottom: '8px' }}>
+            High Risk Account Profile Guide
+          </h3>
+          <p style={{ color: 'var(--ink-soft)', fontSize: '15px' }}>
+            Minimum balance requirements and monthly maintenance fees for <strong>High-Risk</strong> profiles.
+          </p>
+        </div>
+        <div className="risk-table-wrap">
+          <table className="risk-table">
+            <thead>
+              <tr>
+                <th>Bank Name</th>
+                <th>Minimum Balance Required</th>
+                <th>Monthly Maintenance Fees</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>ADIB</td>
+                <td>AED 5,000</td>
+                <td style={{ color: 'var(--accent-mid)', fontWeight: 600 }}>AED 470</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>Mashreq</td>
+                <td>AED 150,000</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>DIB (Dubai Islamic Bank)</td>
+                <td>AED 50,000</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>Emirates NBD</td>
+                <td>AED 200,000</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>FAB (First Abu Dhabi Bank)</td>
+                <td>AED 250,000</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>UBL</td>
+                <td>AED 750,000</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>NBF (National Bank of Fujairah)</td>
+                <td>AED 100,000</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+              </tr>
+              <tr>
+                <td style={{ fontWeight: 600, color: 'var(--ink)' }}>EIB (Emirates Islamic)</td>
+                <td>AED 100,000</td>
+                <td style={{ color: 'var(--green-dark)', fontWeight: 600 }}>Zero</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   );

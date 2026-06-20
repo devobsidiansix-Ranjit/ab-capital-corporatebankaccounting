@@ -7,7 +7,7 @@ import whyVisual from '../assets/why_visual.png';
  * Left: related visual image with overlay and promotional copy.
  * Right: the responsive LeadForm styled as a dark glass card.
  */
-const ConsultationModal = ({ isOpen, onClose, onSubmitSuccess }) => {
+const ConsultationModal = ({ isOpen, onClose, onSubmitSuccess, hasSubmitted, leadData }) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -55,7 +55,12 @@ const ConsultationModal = ({ isOpen, onClose, onSubmitSuccess }) => {
           >
             &times;
           </button>
-          <LeadForm onSubmitSuccess={onSubmitSuccess} darkGlass={true} />
+          <LeadForm 
+            onSubmitSuccess={onSubmitSuccess} 
+            darkGlass={true} 
+            hasSubmitted={hasSubmitted}
+            submittedData={leadData}
+          />
         </div>
       </div>
     </div>

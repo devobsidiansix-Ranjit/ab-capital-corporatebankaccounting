@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
  * Hero component using Image 1 design layout and Image 2 (Burj Khalifa office) background.
  * Overhauled with GSAP ScrollTrigger metric tickers and 3-column framing for the businessman.
  */
-const Hero = ({ onSubmitSuccess, onOpenConsultation }) => {
+const Hero = ({ onSubmitSuccess, onOpenConsultation, hasSubmitted, leadData }) => {
   const heroRef = useRef(null);
   const metricsRef = useRef(null);
 
@@ -160,7 +160,12 @@ const Hero = ({ onSubmitSuccess, onOpenConsultation }) => {
 
       {/* Column 3: Lead Capture Form */}
       <div className="form-panel-wrapper">
-        <LeadForm onSubmitSuccess={onSubmitSuccess} darkGlass={true} />
+        <LeadForm 
+          onSubmitSuccess={onSubmitSuccess} 
+          darkGlass={true} 
+          hasSubmitted={hasSubmitted}
+          submittedData={leadData}
+        />
       </div>
     </section>
   );

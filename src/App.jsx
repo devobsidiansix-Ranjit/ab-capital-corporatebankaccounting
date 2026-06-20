@@ -26,6 +26,7 @@ function App() {
   const [route, setRoute] = useState(window.location.pathname);
   const [isConsultationOpen, setIsConsultationOpen] = useState(false);
   const [leadData, setLeadData] = useState(null);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   // Sync route state with browser back/forward buttons
   useEffect(() => {
@@ -38,6 +39,13 @@ function App() {
     };
   }, []);
 
+  // Redirect to home if on /thankyou but no submission in current session (e.g. on page refresh/reload)
+  useEffect(() => {
+    if (route === '/thankyou' && !hasSubmitted) {
+      navigate('/');
+    }
+  }, [route, hasSubmitted]);
+
   const navigate = (path) => {
     window.history.pushState(null, '', path);
     setRoute(path);
@@ -47,7 +55,7 @@ function App() {
   // Form submission success callback
   const handleFormSuccess = (data) => {
     setLeadData(data);
-    localStorage.setItem('last_lead_data', JSON.stringify(data));
+    setHasSubmitted(true);
     setIsConsultationOpen(false); // Close modal if open
     navigate('/thankyou');
   };
@@ -80,8 +88,6 @@ function App() {
   }, [route]); // Re-observe when route/page changes
 
   const isThankYou = route === '/thankyou';
-  const storedData = localStorage.getItem('last_lead_data');
-  const parsedData = storedData ? JSON.parse(storedData) : null;
 
   // Default Route: /
   return (
@@ -90,6 +96,8 @@ function App() {
       <Hero 
         onSubmitSuccess={handleFormSuccess} 
         onOpenConsultation={() => setIsConsultationOpen(true)} 
+        hasSubmitted={hasSubmitted}
+        leadData={leadData}
       />
       <BankTicker />
       <ProblemSection />
@@ -111,12 +119,14 @@ function App() {
         isOpen={isConsultationOpen}
         onClose={() => setIsConsultationOpen(false)}
         onSubmitSuccess={handleFormSuccess}
+        hasSubmitted={hasSubmitted}
+        leadData={leadData}
       />
 
       <SuccessModal
         isOpen={isThankYou}
         onClose={() => navigate('/')}
-        leadData={leadData || parsedData}
+        leadData={leadData}
       />
     </>
   );
