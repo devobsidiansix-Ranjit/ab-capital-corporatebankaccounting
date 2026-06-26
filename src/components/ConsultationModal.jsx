@@ -57,7 +57,7 @@ const ConsultationModal = ({ isOpen, onClose, onSubmitSuccess, hasSubmitted, lea
           </button>
           <LeadForm 
             onSubmitSuccess={onSubmitSuccess} 
-            darkGlass={true} 
+            darkGlass={false} 
             hasSubmitted={hasSubmitted}
             submittedData={leadData}
           />

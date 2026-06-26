@@ -162,7 +162,7 @@ const Hero = ({ onSubmitSuccess, onOpenConsultation, hasSubmitted, leadData }) =
       <div className="form-panel-wrapper">
         <LeadForm 
           onSubmitSuccess={onSubmitSuccess} 
-          darkGlass={true} 
+          darkGlass={false} 
           hasSubmitted={hasSubmitted}
           submittedData={leadData}
         />
